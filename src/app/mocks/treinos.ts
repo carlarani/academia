@@ -1,83 +1,122 @@
-import { Treino } from "../type/exercicio.type";
+import { Exercicio, Treino, Treinos } from "../type/exercicio.type";
 
-export const treinoAcademia: Treino = {
-    treinoA: [{
-        nome: 'Fly',
-        carga: 60,
-        control: 'fly',
-    }, {
-        nome: 'Fly invertido',
-        carga: 60,
-        control: "fly-invertido"
-    }, {
-        nome: 'Remada',
-        carga: 60,
-        control: "remada"
-    }, {
-        nome: 'Rosca',
-        carga: 60,
-        control: "rosca"
-    }, {
-        nome: 'Tríceps máquina',
-        carga: 60,
-        control: "triceps-maquina"
-    }, {
-        nome: 'Puxador frontal',
-        carga: 60,
-        control: "puxador-frontal"
-    }],
-    treinoB: [{
-        nome: 'Leg press 45°',
-        carga: 60,
-        control: "leg-press-45"
-    }, {
-        nome: 'Panturilha no leg press 45°',
-        carga: 60,
-        control: "panturilha-leg-press-45"
-    }, {
-        nome: 'Cadeira extensora unilateral',
-        carga: 60,
-        control: "cadeira-extensora-unilateral"
-    }, {
-        nome: 'Cadeira Flexora',
-        carga: 60,
-        control: "cadeira-flexora"
-    }, {
-        nome: 'Abdutora',
-        carga: 60,
-        control: "abdutora"
-    }, {
-        nome: 'Adutora',
-        carga: 60,
-        control: "adutora"
-    }, {
-        nome: 'Abdutora em pé',
-        carga: 60,
-        control: "abdutora-em-pe"
-    },],
-    treinoC: [{
-        nome: 'Abdominal máquina',
-        carga: 60,
-        control: "abdominal-maquina"
-    }, {
-        nome: 'Abdominal infra',
-        carga: 60,
-        control: "abdominal-infra"
-    }, {
-        nome: 'Russian twist na bola',
-        carga: 60,
-        control: "russian-twist-na-bola"
-    }, {
-        nome: 'Abdominal completo na bola',
-        carga: 60,
-        control: "abdominal-completo-na-bola"
-    }, {
-        nome: 'Hiperextensão lombar',
-        carga: 60,
-        control: "hiperextensao-lombar"
-    }, {
-        nome: 'Lateral no hiperextensor',
-        carga: 60,
-        control: "lateral-no-hiperextensor"
-    }]
-}
+export const treinoAcademia: Treinos =
+    [
+        [{
+            nome: 'Fly',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: 'fly',
+        } as Exercicio, {
+            nome: 'Fly invertido',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "fly-invertido"
+        }, {
+            nome: 'Remada',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "remada"
+        }, {
+            nome: 'Rosca',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "rosca"
+        }, {
+            nome: 'Tríceps máquina',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "triceps-maquina"
+        }, {
+            nome: 'Puxador frontal',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "puxador-frontal"
+        }] as Treino,
+        [{
+            nome: 'Leg press 45°',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "leg-press-45"
+        }, {
+            nome: 'Panturilha no leg press 45°',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "panturilha-leg-press-45"
+        }, {
+            nome: 'Cadeira extensora unilateral',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "cadeira-extensora-unilateral"
+        }, {
+            nome: 'Cadeira Flexora',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "cadeira-flexora"
+        }, {
+            nome: 'Abdutora',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "abdutora"
+        }, {
+            nome: 'Adutora',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "adutora"
+        }, {
+            nome: 'Abdutora em pé',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "abdutora-em-pe"
+        }] as Treino,
+        [{
+            nome: 'Abdominal máquina',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "abdominal-maquina"
+        }, {
+            nome: 'Abdominal infra',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "abdominal-infra"
+        }, {
+            nome: 'Russian twist na bola',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "russian-twist-na-bola"
+        }, {
+            nome: 'Abdominal completo na bola',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "abdominal-completo-na-bola"
+        }, {
+            nome: 'Hiperextensão lombar',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "hiperextensao-lombar"
+        }, {
+            nome: 'Lateral no hiperextensor',
+            carga: 0,
+            series: 4,
+            repeticoes: 10,
+            control: "lateral-no-hiperextensor"
+        }] as Treino
+    ];

@@ -2,3 +2,16 @@ html,
 body {
     font-family: 'Roboto', sans-serif;
 }
+
+.material-symbols-outlined {
+    background-color: unset;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+
+.background-clicked {
+    background-color: lightgreen;
+}

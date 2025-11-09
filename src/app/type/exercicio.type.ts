@@ -2,10 +2,11 @@ export interface Exercicio {
     control: string;
     nome: string;
     carga: number;
+    series: number;
+    repeticoes: number;
+    clicked?: boolean;
 }
 
-export interface Treino {
-    treinoA: Exercicio[];
-    treinoB: Exercicio[];
-    treinoC: Exercicio[];
-}
+export type Treino = Exercicio[];
+
+export type Treinos = Treino[];
