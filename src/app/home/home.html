@@ -1,0 +1,27 @@
+<mat-tab-group fitInkBarToContent>
+    <mat-tab label="Treino A">
+        <mat-card class="example-card" appearance="outlined" *ngFor="let exercicio of treinoInit?.treinoA"
+            style="margin: 10px">
+            <mat-card-header>
+                <mat-card-title style="margin-bottom: 10px">{{exercicio.nome}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
+                <div style="display: flex; flex-direction: column;">
+                    <span>Series:</span>
+                    <input type="number" style="width: 3rem; border-radius: 5px" value="4" disabled />
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <span>Repetições:</span>
+                    <input type="number" style="width: 3rem; border-radius: 5px" value="10" disabled />
+                </div>
+                <div style="display: flex; flex-direction: column;">
+                    <span>Carga:</span>
+                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.carga'
+                        (ngModelChange)="onChangeCargaValue()" />
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </mat-tab>
+    <mat-tab label="Treino B">Content 2</mat-tab>
+    <mat-tab label="Treino C">Content 3</mat-tab>
+</mat-tab-group>
