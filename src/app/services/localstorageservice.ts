@@ -17,12 +17,19 @@ export class LocalStorageService {
       treinos.forEach(treino => {
         treino.forEach((exercicio) => {
           exercicio.clicked = false;
+          exercicio.seriesExecutadas = 0;
         });
       });
       return treinos;
     } else {
       console.log('Nenhum treino salvo encontrado no local storage.');
       localStorage.setItem('treinoAcademia', JSON.stringify(treinoAcademia));
+      treinoAcademia.forEach(treino => {
+        treino.forEach((exercicio) => {
+          exercicio.clicked = false;
+          exercicio.seriesExecutadas = 0;
+        });
+      });
       return treinoAcademia;
     }
   }

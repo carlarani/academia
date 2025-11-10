@@ -5,6 +5,7 @@ export interface Exercicio {
     series: number;
     repeticoes: number;
     clicked?: boolean;
+    seriesExecutadas: number;
 }
 
 export type Treino = Exercicio[];

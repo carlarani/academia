@@ -15,3 +15,7 @@ body {
 .background-clicked {
     background-color: lightgreen;
 }
+
+mat-card-content>mat-icon {
+    font-size: 12px;
+}

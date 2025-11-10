@@ -11,7 +11,7 @@ import { ButtonModule } from 'primeng/button';
 
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { LocalStorageService } from '../services/localstorageservice';
-import { Treino, Treinos } from '../type/exercicio.type';
+import { Exercicio, Treino, Treinos } from '../type/exercicio.type';
 
 
 @Component({
@@ -40,5 +40,16 @@ export class Home implements OnInit {
   onChangeValues(): void {
     console.log('onChangeCargaValue - treinoInit', this.treinosInit);
     this.service.updateTreinoNoLocalStorage(this.treinosInit);
+  }
+
+  marcarExecucaoSerie(exercicio: Exercicio): void {
+    console.log('marcarExecucaoSerie - exercicio antes:', exercicio);
+    exercicio.seriesExecutadas += 1;
+    exercicio.clicked = !exercicio.clicked;
+    if (exercicio.seriesExecutadas <= exercicio.series) {
+      setTimeout(() => {
+        exercicio.clicked = !exercicio.clicked
+      }, 30000);
+    }
   }
 }

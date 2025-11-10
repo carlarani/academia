@@ -6,8 +6,7 @@
                 <mat-card-title-group>
                     <mat-card-title style="margin-bottom: 10px">{{exercicio.nome}}</mat-card-title>
                     <button matIconButton aria-label="Example icon button with a menu icon"
-                        (click)="exercicio.clicked = !exercicio.clicked"
-                        style="border: unset; background-color: unset;">
+                        (click)="marcarExecucaoSerie(exercicio)" style="border: unset; background-color: unset;">
                         <mat-icon *ngIf="!exercicio.clicked" class="material-symbols-outlined">
                             circle
                         </mat-icon>
@@ -15,6 +14,16 @@
                     </button>
                 </mat-card-title-group>
             </mat-card-header>
+            <mat-card-content>
+                <mat-icon *ngIf="exercicio.series>=1"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 1">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=2"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 2">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=3"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 3">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=4"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 4">circle</mat-icon>
+            </mat-card-content>
             <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
                 <div style="display: flex; flex-direction: column;">
                     <span>Series:</span>
@@ -50,6 +59,16 @@
                     </button>
                 </mat-card-title-group>
             </mat-card-header>
+            <mat-card-content>
+                <mat-icon *ngIf="exercicio.series>=1"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 1">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=2"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 2">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=3"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 3">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=4"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 4">circle</mat-icon>
+            </mat-card-content>
             <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
                 <div style="display: flex; flex-direction: column;">
                     <span>Series:</span>
@@ -85,6 +104,16 @@
                     </button>
                 </mat-card-title-group>
             </mat-card-header>
+            <mat-card-content>
+                <mat-icon *ngIf="exercicio.series>=1"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 1">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=2"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 2">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=3"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 3">circle</mat-icon>
+                <mat-icon *ngIf="exercicio.series>=4"
+                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 4">circle</mat-icon>
+            </mat-card-content>
             <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
                 <div style="display: flex; flex-direction: column;">
                     <span>Series:</span>
