@@ -19,3 +19,36 @@ body {
 mat-card-content>mat-icon {
     font-size: 12px;
 }
+
+.card-margin {
+    margin: 10px;
+}
+
+.card-title {
+    margin-bottom: 10px;
+}
+
+.icon-button {
+    border: none;
+    background: transparent;
+}
+
+.series-icons {
+    margin: 8px 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.small-input {
+    width: 3rem;
+    border-radius: 5px;
+}

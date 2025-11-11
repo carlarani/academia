@@ -1,136 +1,59 @@
 <mat-tab-group fitInkBarToContent>
+    <ng-template #cardTemplate let-treino="treino" let-useMark="useMark">
+        <mat-card class="example-card card-margin" appearance="outlined" *ngFor="let exercicio of treino"
+            [ngClass]="{ 'background-clicked': exercicio.clicked }">
+            <mat-card-header>
+                <mat-card-title-group>
+                    <mat-card-title class="card-title">{{ exercicio.nome }}</mat-card-title>
+
+                    <button matIconButton aria-label="toggle execution" (click)="marcarExecucaoSerie(exercicio)"
+                        class="icon-button">
+                        <mat-icon *ngIf="!exercicio.clicked" class="material-symbols-outlined">
+                            circle
+                        </mat-icon>
+                        <mat-icon *ngIf="exercicio.clicked">check_circle</mat-icon>
+                    </button>
+                </mat-card-title-group>
+            </mat-card-header>
+
+            <mat-card-content class="series-icons">
+                <ng-container *ngFor="let idx of [1, 2, 3, 4]; let i = index">
+                    <mat-icon *ngIf="exercicio.series >= (i + 1)"
+                        [class.material-symbols-outlined]="exercicio.seriesExecutadas < (i + 1)">circle</mat-icon>
+                </ng-container>
+            </mat-card-content>
+
+            <mat-card-footer class="card-footer">
+                <div class="footer-column">
+                    <span>Series:</span>
+                    <input type="number" class="small-input" [(ngModel)]="exercicio.series"
+                        (ngModelChange)="onChangeValues()" />
+                </div>
+
+                <div class="footer-column">
+                    <span>Repetições:</span>
+                    <input type="number" class="small-input" [(ngModel)]="exercicio.repeticoes"
+                        (ngModelChange)="onChangeValues()" />
+                </div>
+
+                <div class="footer-column">
+                    <span>Carga:</span>
+                    <input type="number" class="small-input" [(ngModel)]="exercicio.carga"
+                        (ngModelChange)="onChangeValues()" />
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </ng-template>
+
     <mat-tab label="Treino A">
-        <mat-card class="example-card" appearance="outlined" *ngFor="let exercicio of treinoA" style="margin: 10px"
-            [ngClass]="{'background-clicked': exercicio.clicked}">
-            <mat-card-header>
-                <mat-card-title-group>
-                    <mat-card-title style="margin-bottom: 10px">{{exercicio.nome}}</mat-card-title>
-                    <button matIconButton aria-label="Example icon button with a menu icon"
-                        (click)="marcarExecucaoSerie(exercicio)" style="border: unset; background-color: unset;">
-                        <mat-icon *ngIf="!exercicio.clicked" class="material-symbols-outlined">
-                            circle
-                        </mat-icon>
-                        <mat-icon *ngIf="exercicio.clicked">check_circle</mat-icon>
-                    </button>
-                </mat-card-title-group>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-icon *ngIf="exercicio.series>=1"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 1">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=2"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 2">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=3"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 3">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=4"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 4">circle</mat-icon>
-            </mat-card-content>
-            <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <span>Series:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.series'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span>Repetições:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.repeticoes'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span>Carga:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.carga'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-            </mat-card-footer>
-        </mat-card>
+        <ng-container *ngTemplateOutlet="cardTemplate; context: { treino: treinoA, useMark: true }"></ng-container>
     </mat-tab>
+
     <mat-tab label="Treino B">
-        <mat-card class="example-card" appearance="outlined" *ngFor="let exercicio of treinoB" style="margin: 10px"
-            [ngClass]="{'background-clicked': exercicio.clicked}">
-            <mat-card-header>
-                <mat-card-title-group>
-                    <mat-card-title style="margin-bottom: 10px">{{exercicio.nome}}</mat-card-title>
-                    <button matIconButton aria-label="Example icon button with a menu icon"
-                        (click)="exercicio.clicked = !exercicio.clicked"
-                        style="border: unset; background-color: unset;">
-                        <mat-icon *ngIf="!exercicio.clicked" class="material-symbols-outlined">
-                            circle
-                        </mat-icon>
-                        <mat-icon *ngIf="exercicio.clicked">check_circle</mat-icon>
-                    </button>
-                </mat-card-title-group>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-icon *ngIf="exercicio.series>=1"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 1">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=2"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 2">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=3"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 3">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=4"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 4">circle</mat-icon>
-            </mat-card-content>
-            <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <span>Series:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.series'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span>Repetições:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.repeticoes'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span>Carga:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.carga'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-            </mat-card-footer>
-        </mat-card>
+        <ng-container *ngTemplateOutlet="cardTemplate; context: { treino: treinoB, useMark: false }"></ng-container>
     </mat-tab>
+
     <mat-tab label="Treino C">
-        <mat-card class="example-card" appearance="outlined" *ngFor="let exercicio of treinoC" style="margin: 10px"
-            [ngClass]="{'background-clicked': exercicio.clicked}">
-            <mat-card-header>
-                <mat-card-title-group>
-                    <mat-card-title style="margin-bottom: 10px">{{exercicio.nome}}</mat-card-title>
-                    <button matIconButton aria-label="Example icon button with a menu icon"
-                        (click)="exercicio.clicked = !exercicio.clicked"
-                        style="border: unset; background-color: unset;">
-                        <mat-icon *ngIf="!exercicio.clicked" class="material-symbols-outlined">
-                            circle
-                        </mat-icon>
-                        <mat-icon *ngIf="exercicio.clicked">check_circle</mat-icon>
-                    </button>
-                </mat-card-title-group>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-icon *ngIf="exercicio.series>=1"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 1">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=2"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 2">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=3"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 3">circle</mat-icon>
-                <mat-icon *ngIf="exercicio.series>=4"
-                    [class.material-symbols-outlined]="exercicio.seriesExecutadas < 4">circle</mat-icon>
-            </mat-card-content>
-            <mat-card-footer style="display: flex; justify-content: space-between; padding: 10px;">
-                <div style="display: flex; flex-direction: column;">
-                    <span>Series:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.series'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span>Repetições:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.repeticoes'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-                <div style="display: flex; flex-direction: column;">
-                    <span>Carga:</span>
-                    <input type="number" style="width: 3rem; border-radius: 5px" [(ngModel)]='exercicio.carga'
-                        (ngModelChange)="onChangeValues()" />
-                </div>
-            </mat-card-footer>
-        </mat-card>
+        <ng-container *ngTemplateOutlet="cardTemplate; context: { treino: treinoC, useMark: false }"></ng-container>
     </mat-tab>
 </mat-tab-group>
