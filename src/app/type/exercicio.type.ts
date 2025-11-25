@@ -5,6 +5,7 @@ export interface Exercicio {
     series: number;
     repeticoes: number;
     clicked?: boolean;
+    done?: boolean;
     seriesExecutadas: number;
 }
 

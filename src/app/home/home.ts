@@ -52,20 +52,40 @@ export class HomeComponent implements OnInit {
   }
 
   marcarExecucaoSerie(exercicio: Exercicio): void {
-    const maxSeries = exercicio.series ?? 0;
-    const executed = exercicio.seriesExecutadas ?? 0;
+    const maxSeries = Number(exercicio.series ?? 0);
+    const executed = Number(exercicio.seriesExecutadas ?? 0);
 
     if (executed >= maxSeries) {
-      return; // nothing to do, already reached the max
+      return; // already done
     }
 
     exercicio.seriesExecutadas = executed + 1;
     exercicio.clicked = true;
 
-    // auto-unset clicked after 30s (keeps UI feedback non-blocking)
-    setTimeout(() => (exercicio.clicked = false), 30000);
+    // mark done when reaches or exceeds max
+    if (exercicio.seriesExecutadas >= maxSeries && maxSeries > 0) {
+      exercicio.done = true;
+      exercicio.clicked = false;
+      // find which treino contains this exercicio
+      const treinoIndex = this.treinos.findIndex((t) => t.includes(exercicio));
+      if (treinoIndex >= 0) {
+        const reordered = this.reorderTreino(this.treinos[treinoIndex]);
+        // replace that treino with reordered array (immutable replace)
+        this.treinos = this.treinos.map((t, i) => (i === treinoIndex ? reordered : t));
+      }
+    } else {
+      // auto-unset clicked after 30s (keeps UI feedback non-blocking)
+      setTimeout(() => (exercicio.clicked = false), 30000);
+    }
 
     this.save();
+  }
+
+  // move finished exercicios to the end (keeps order otherwise)
+  private reorderTreino(treino: Treino): Treino {
+    const notDone = treino.filter((e) => !e.done);
+    const done = treino.filter((e) => e.done);
+    return [...notDone, ...done];
   }
 
   // helps ngFor performance when rendering lists of exercicios

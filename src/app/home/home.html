@@ -1,17 +1,21 @@
 <mat-tab-group fitInkBarToContent>
     <ng-template #cardTemplate let-treino="treino" let-useMark="useMark">
-        <mat-card class="example-card card-margin" appearance="outlined" *ngFor="let exercicio of treino"
-            [ngClass]="{ 'background-clicked': exercicio.clicked }">
+        <mat-card class="example-card card-margin" appearance="outlined" *ngFor="let exercicio of treino" [ngClass]="{
+    'background-clicked': exercicio.clicked,
+    'fully-done': exercicio.seriesExecutadas === exercicio.series && exercicio.series > 0,
+  }">
             <mat-card-header>
                 <mat-card-title-group>
                     <mat-card-title class="card-title">{{ exercicio.nome }}</mat-card-title>
 
                     <button matIconButton aria-label="toggle execution" (click)="marcarExecucaoSerie(exercicio)"
                         class="icon-button">
-                        <mat-icon *ngIf="!exercicio.clicked" class="material-symbols-outlined">
+                        <mat-icon *ngIf="!exercicio.clicked && exercicio.seriesExecutadas < exercicio.series"
+                            class="material-symbols-outlined">
                             circle
                         </mat-icon>
-                        <mat-icon *ngIf="exercicio.clicked">check_circle</mat-icon>
+                        <mat-icon
+                            *ngIf="exercicio.clicked || exercicio.seriesExecutadas === exercicio.series">check_circle</mat-icon>
                     </button>
                 </mat-card-title-group>
             </mat-card-header>

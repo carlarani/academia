@@ -24,6 +24,7 @@ export class LocalStorageService {
             exercicio.carga = cargas[exercicio.nome] || 0;
           }
           exercicio.clicked = false;
+          exercicio.done = false;
           exercicio.seriesExecutadas = 0;
         });
       });
@@ -36,6 +37,7 @@ export class LocalStorageService {
         treino.forEach((exercicio) => {
           exercicio.clicked = false;
           exercicio.seriesExecutadas = 0;
+          exercicio.done = false;
         });
       });
       return treinoAcademia;
