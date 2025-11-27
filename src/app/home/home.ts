@@ -39,6 +39,12 @@ export class HomeComponent implements OnInit {
   get treinoC(): Treino {
     return this.treinos[2] ?? [];
   }
+  get treinoD(): Treino {
+    return this.treinos[3] ?? [];
+  }
+  get treinoE(): Treino {
+    return this.treinos[4] ?? [];
+  }
 
   ngOnInit(): void {
     const saved = this.service.checkExisteTreinoSalvoNoLocalStorage();
